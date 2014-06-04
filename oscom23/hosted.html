@@ -1,0 +1,196 @@
+<h1>Hosted Payment Pages <small>v2.0<br />for osCommerce Online Merchant v2.3</small></h1>
+
+<p>WorldPay Hosted Payment Pages is bundled with osCommerce Online Merchant and is also available as a separate Add-On package existing store owners can use to upgrade to.</p>
+
+<div class="note">In addition to configuring this module with its configuration parameters, settings must also be applied to the WorldPay Merchant Interface which are described below.</div>
+
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="{link}Package|Library|en&worldpay&oscom23&hosted{link}">{link}Package|Library|en&worldpay&oscom23&hosted{link}</a></p>
+</div>
+
+<h2>Configuration Settings</h2>
+
+<h3>Module Configuration</h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Enable WorldPay Hosted Payment Pages</td>
+      <td>Setting this parameter to <em>True</em> makes the payment method available to customers during the checkout procedure.</td>
+      <td><em>True</em></td>
+    </tr>
+    <tr>
+      <td>Installation ID</td>
+      <td>The Installation ID of the WorldPay account to use for transactions.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Callback Password</td>
+      <td>
+        <p>The password WorldPay sends to the callback processing script.</p>
+
+        <div class="info">This must be the same value as <strong>Payment Response password</strong> that is set on the WorldPay Merchant Interface.</div></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MD5 Password</td>
+      <td>
+        <p>The MD5 password to verify transactions with.</p>
+
+        <div class="info">This must be the same value as <strong>MD5 secret for transactions</strong> that is set on the WorldPay Merchant Interface.</div></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Transaction Method</td>
+      <td>
+        The following transaction methods are available to process transactions with:
+
+        <dl>
+          <dt>Pre-Authorization</dt>
+          <dd>The <em>Pre-Authorization</em> transaction method only verifies the card and card holder. Pre-Authorizations can be captured manually on the WorldPay Merchant Interface.</dd>
+
+          <dt>Capture</dt>
+          <dd>The <em>Capture</em> transaction method verifies, authorises, and transfers the funds to your Merchant account.</dd>
+        </dl>
+      </td>
+      <td><em>Capture</em></td>
+    </tr>
+    <tr>
+      <td>Set Preparing Order Status</td>
+      <td>
+        The customers order is saved in the database on the checkout confirmation page before the customer is forwarded to WorldPay to finalize the payment transaction. The order is saved in the database with this defined order status.<br /><br />
+        The order status is updated again when the customer finalizes the payment transaction at WorldPay and returns to the store with the link provided by WorldPay. The order status is also updated when the Callback from WorldPay is received.<br /><br />
+        If the customer does not finalize the payment transaction at WorldPay, the order remains in the database with this order status and can be removed after a period of time.
+      </td>
+      <td><em>Preparing [WorldPay]</em></td>
+    </tr>
+    <tr>
+      <td>Set Order Status</td>
+      <td>The orders status will be updated to this value when a successful transaction has been made.</td>
+      <td><em>Default Order Status</em></td>
+    </tr>
+    <tr>
+      <td>Transaction Order Status</td>
+      <td>Transactions are logged in this private order status level.</td>
+      <td><em>WorldPay [Transactions]</em></td>
+    </tr>
+    <tr>
+      <td>Payment Zone</td>
+      <td>If set, this payment method will only be available to orders made within the defined zone.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Test Mode</td>
+      <td>Setting this parameter to <em>True</em> treats each transaction as a test transaction and does not process any funds.</td>
+      <td><em>False</em></td>
+    </tr>
+    <tr>
+      <td>Debug E-Mail Address</td>
+      <td>Send invalid transaction parameters to this e-mail address.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Sort Order</td>
+      <td>The position to show the payment method on the checkout payment page against other available payment methods.</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>WorldPay Merchant Interface</h3>
+
+<p>The following settings must be reviewed and set at the WorldPay Merchant Interface.</p>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Payment Response URL</strong></td>
+      <td>
+        <p>This must be set to the following value:</p>
+        {code}<WPDISPLAY ITEM=MC_callback>{code}
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Payment Response enabled?</strong></td>
+      <td>This must be enabled.</p>
+    </tr>
+    <tr>
+      <td><strong>Enable the Shopper Response</strong></td>
+      <td>This must be enabled.</p>
+    </tr>
+    <tr>
+      <td><strong>Payment Response password</strong></td>
+      <td>This must be sent and must match the <em>Callback Password</em> module configuration value.</td>
+    </tr>
+    <tr>
+      <td><strong>MD5 secret for transactions</strong></td>
+      <td>This must be sent and must match the <em>MD5 Password</em> module configuration value.</td>
+    </tr>
+  </tbody>
+</table>
+
+{image}merchant_interface-settings.jpg{image}
+
+<h2>Add-On Package</h2>
+
+<p>The separate WorldPay Hosted Payment Pages Add-On package is available at:</p>
+
+<p><a href="http://addons.oscommerce.com/info/5665" target="_blank">http://addons.oscommerce.com/info/5665</a></p>
+
+<h2>Online Demonstration</h2>
+
+<p>An online demonstration is available at:</p>
+
+<p><a href="http://demo.oscommerce.com" target="_blank">http://demo.oscommerce.com</a></p>
+
+<p><i>For the online demonstration, WorldPay Hosted Payment Pages has been configured with WorldPay's test server environment and requires a test payment card to purchase an order.</i></p>
+
+<h2>Manual Installation (as an Add-On)</h2>
+
+<p>After extracting the Add-On package, copy the files located in the <em>catalog</em> directory to your osCommerce installation directory on the server. The files must be copied in the correct directory structure as extracted from the Add-On package.</p>
+
+<p>The file listing is as follows:</p>
+
+<ul>
+  <li>ext/modules/payment/rbsworldpay/hosted_callback.php</li>
+  <li>includes/languages/english/modules/payment/rbsworldpay_hosted.php</li>
+  <li>includes/modules/payment/rbsworldpay_hosted.php</li>
+</ul>
+
+<p>The standard language definitions in English are provided in the Add-On package. For additional languages, copy the English language definition file to the appropriate language directory and open the file with a text editor to edit the language definitions. The location of the language definition file must be in:</p>
+
+<ul>
+  <li>includes/languages/<em>LANGUAGE</em>/modules/payment/rbsworldpay_hosted.php</li>
+</ul>
+
+<p>When the files have been copied to their appropriate locations, the payment module will be available on the Administration Tool -> Modules -> Payment -> Install Module page where it can be installed, or on the Administration Tool -> Modules -> Payment page if the module was already previously installed.</p>
+
+<p>If the module was already previously installed, it is important to visit the module configuration page to make sure new parameters are automatically installed in the database.</p>
+
+<h2>Changelog</h2>
+
+<dl class="bulleted">
+  <dt>v2.0 04-Jun-2014</dt>
+  <dd>Perform more verifications on the callback transaction.</dd>
+  <dd>Label public title with test tag when in testing mode.</dd>
+  <dd>Allow debug transaction information to be sent in an e-mail for failed transactions</dd>
+  <dd>Include transaction information in a private order status level.</dd>
+
+  <dt>v1.0 12-Jan-2008</dt>
+  <dd>Initial Release (WorldPay Select Junior)</dd>
+</dl>
